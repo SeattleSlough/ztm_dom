@@ -25,7 +25,7 @@ function createDeleteButtonElement( parent ) {
     var button = document.createElement( "button" );
     button.appendChild( document.createTextNode( "Done" ) );
     parent.appendChild( button );
-};
+}
 
 function createDivElement() {
     var div = document.createElement( "div" );
