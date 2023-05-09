@@ -44,7 +44,7 @@ var ul = document.querySelector( "ul" );
 
 //Refactoring
 function inputLength() {
-    return input.value.length
+    return input.value.length;
 }
 
 function createListElement() {
@@ -62,10 +62,10 @@ function addListAfterClick() {
 
 function addListAfterEnter( key ) {
     if( input.value.length > 0 && key.code === "Enter" ) {
-        createListElement()
+        createListElement();
     }
 }
 
-button.addEventListener( "click", addListAfterClick ); //we are pointing to, not invoking function
+button.addEventListener( "click", addListAfterClick ); //CALLBACK FUNCTION (not immediately invoked)
 
 input.addEventListener( "keydown", addListAfterEnter ); //ibid
