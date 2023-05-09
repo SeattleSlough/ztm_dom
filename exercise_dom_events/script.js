@@ -4,6 +4,7 @@ var ul = document.querySelector( "ul" );
 var allListItems = document.querySelectorAll( "li" );
 var deleteButtons = getArrayFromCollection( ".status" );
 
+
 function getArrayFromCollection( classID ) {
     var rawCollection = document.querySelectorAll( classID );
     return [ ...rawCollection ];
