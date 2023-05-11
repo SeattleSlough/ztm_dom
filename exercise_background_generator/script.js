@@ -1,13 +1,12 @@
 var body = document.querySelector( "body" );
 var bodyObject = getComputedStyle( body );
 var color = document.querySelectorAll( "input" );
-var h3 = document.getElementsByTagName( "h3" )[ 0 ];
-var currentCSS = bodyObject.getPropertyValue( bodyObject[ 22 ] );
-console.log( currentCSS );
+var h3 = document.querySelector( "h3" );
+var currentBodyCss = bodyObject.getPropertyValue( bodyObject[ 22 ] );
 
-// function testFunction( event ) {
-//     console.log( event );
-// }
+function showInitialCss( string ) {
+    h3.append( document.createTextNode( `${ string };` ) );
+}
 
 let fullHex = ( hex ) => {
     let r = hex.slice( 1, 2 );
@@ -60,9 +59,9 @@ function refreshH3( code1, code2 ) {
     h3.append( document.createTextNode( `linear-gradient(to right, ${ code1 }, ${ code2 });` ) );
 }
 
-function changeBackground( color1, color2 ) {
-    body.style.backgroundImage = `linear-gradient(to right, ${ color1 }, ${ color2 }`;
+function changeBackground( colorA, colorB ) {
+    body.style.backgroundImage = `linear-gradient(to right, ${ colorA }, ${ colorB }`;
 }
 
-
+showInitialCss( currentBodyCss );
 colorPickerChange( color );
