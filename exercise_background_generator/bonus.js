@@ -4,10 +4,13 @@
 // show values of initial colors in h3 [DONE]
 // Create a randomizer button
 
+
+//VARIABLES
 var css = document.querySelector( 'h3' );
 var color1 = document.querySelector( '.color1' );
 var color2 = document.querySelector( '.color2' );
 var body = document.getElementById( 'gradient' );
+var button = document.querySelector( '.random' );
 
 
 //GETTING THE backgroundImage OBJ PROPERTIES AS STRING
