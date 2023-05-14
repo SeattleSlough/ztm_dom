@@ -20,22 +20,25 @@ let propValue = function( element, index ) {
 var propertyString = propValue( body, 22 );
 
 //RGB --> HEX CODE
+
+//this function ensures each RGB value is converted to a two character hex value
+//invoked by gradientToHex() below
+const colorToFullHex = ( color ) => {
+    let hexadecimal = color.toString( 16 );
+    return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
+};
 function gradientToHex( string ) {
     let rawArray = string.match( /([0-9]+)/ig );
     let hexArray = [];
     rawArray.forEach( item => {
         item = ~~item;
         item = item.toString( 16 );
-        item = colorToHex( item );
+        item = colorToFullHex( item );
         hexArray.push( item );
     } );
     pickerHex( hexArray );
 }
 
-const colorToHex = ( color ) => {
-    let hexadecimal = color.toString( 16 );
-    return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
-};
 
 //VIEW CONTROLLERS
 function pickerHex( array ) {
