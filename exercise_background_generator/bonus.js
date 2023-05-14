@@ -1,5 +1,8 @@
 
-
+// Bonus Tasks
+// Set initial picker colors to initial style.css [DONE]
+// show values of initial colors in h3 [DONE]
+// Create a randomizer button
 
 var css = document.querySelector( 'h3' );
 var color1 = document.querySelector( '.color1' );
@@ -7,6 +10,7 @@ var color2 = document.querySelector( '.color2' );
 var body = document.getElementById( 'gradient' );
 
 
+//GETTING THE backgroundImage OBJ PROPERTIES AS STRING
 let propValue = function( element, index ) {
     let elementObj = getComputedStyle( element );
     let propertyKey = elementObj[ index ];
@@ -15,6 +19,7 @@ let propValue = function( element, index ) {
 
 var propertyString = propValue( body, 22 );
 
+//RGB --> HEX CODE
 function gradientToHex( string ) {
     let rawArray = string.match( /([0-9]+)/ig );
     let hexArray = [];
@@ -32,7 +37,7 @@ const colorToHex = ( color ) => {
     return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
 };
 
-
+//VIEW CONTROLLERS
 function pickerHex( array ) {
     let array1 = array.slice( 0, 3 );
     let array2 = array.slice( 3 );
@@ -52,7 +57,11 @@ function setGradient() {
     css.textContent = body.style.background;
 }
 
+
+//KICKING OFF THE PAGE
 gradientToHex( propertyString );
+
+
 
 color1.addEventListener( "input", setGradient );
 
