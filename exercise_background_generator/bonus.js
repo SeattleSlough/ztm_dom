@@ -3,51 +3,53 @@ var color1 = document.querySelector( '.color1' );
 var color2 = document.querySelector( '.color2' );
 var body = document.getElementById( 'gradient' );
 
+
 let propValue = function( element, index ) {
     let elementObj = getComputedStyle( element );
     let propertyKey = elementObj[ index ];
     return elementObj.getPropertyValue( propertyKey );
 };
 
-var rgbString = propValue( body, 22 );;
+var propertyString = propValue( body, 22 );
 
-function componentToHex( c ) { 
-    c.forEach( item  => {
-        item === "0" ? "0" + item : item;
-    })
+function gradientToHex( string ) {
+    let rawArray = string.match( /([0-9]+)/ig );
+    let hexArray = [];
+    rawArray.forEach( item => {
+        item = ~~item;
+        item = item.toString( 16 );
+        item = colorToHex( item );
+        hexArray.push( item );
+    } );
+    pickerHex( hexArray );
 }
 
-let rgbExtract = function( string, start, stop = 0 ) {
-    let arrayStr = string.match( /([0-9]+)/ig );
-    let numbers = [];
-    arrayStr.forEach( element => {
-        numbers.push( ~~element );
-    } );
-    return ( stop === 0 ? numbers.slice( start ) : numbers.slice( start, stop ) );
+const colorToHex = ( color ) => {
+    let hexadecimal = color.toString( 16 );
+    return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
 };
 
-function rgbToHex( array ) {
-    array.forEach( element => {
-        element === 0? element + 0
-    })
-    }
+
+function pickerHex( array ) {
+    let array1 = array.slice( 0, 3 );
+    let array2 = array.slice( 3 );
+
+    let left = "#" + array1.join( '' );
+    let right = "#" + array2.join( '' );
+    initialPickerColors( left, right );
+
 }
-
-var rgbLeft = stringToNumbers( rgbString, 0, 3 );
-var rgbRight = stringToNumbers( rgbString, 3 );
-
-
-
-
-
-
+function initialPickerColors( left, right ) {
+    color1.value = left;
+    color2.value = right;
+}
 function setGradient() {
     body.style.background = `linear-gradient(to right, ${ color1.value }, ${ color2.value })`;
     css.textContent = body.style.background;
 }
 
+gradientToHex( propertyString );
+
 color1.addEventListener( "input", setGradient );
 
 color2.addEventListener( "input", setGradient );
-
-// setPickers( rgb1, rgb2 );
